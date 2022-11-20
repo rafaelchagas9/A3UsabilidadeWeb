@@ -1,0 +1,10 @@
+mixin toast(title, error)
+    .bg-dark.position-relative.bd-example-toasts(aria-live='polite' aria-atomic='true')
+        #toastPlacement.toast-container.position-absolute.p-3.top-0.end-0
+            .toast(id='toast')
+                .toast-header
+                    img.rounded.me-2(src='https://cdn-icons-png.flaticon.com/512/5219/5219070.png' width='32px' height='32px' alt='...')
+                    strong.me-auto Erro
+                    small 
+                .toast-body
+                    | Falha ao realizar a operação!

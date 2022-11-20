@@ -1,0 +1,52 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Document
+    link(rel='stylesheet' href='bootstrap/css/bootstrap.min.css')
+body
+    include ../navbar.pug
+    +navbar()
+    include ../toast.pug
+    +toast()
+    .container
+        .text-center.mb-4
+            h3 Adicionar
+            p.text-muted Preencha os dados abaixo
+        .container.d-flex.justify-content-center
+            form(action='/atleta-cad' method='post' style='width: 50vw; min-width: 300px;' id='form')
+                .row.mb-3
+                    .col
+                        label.form-label
+                            | Nome
+                        input.form-control(type='text' name='nome' placeholder='Insira o nome')
+                    .col
+                        label.form-label
+                            | Sobrenome
+                        input.form-control(type='text' name='sobrenome' placeholder='Insira o sobrenome')
+                .row
+                    .col
+                        label.form-label
+                            | Email
+                        input.form-control(type='text' name='email' placeholder='nome@exemplo.com')
+                    .col
+                        label.form-label
+                            | Telefone
+                        input.form-control(type='text' name='telefone' placeholder='11987654321')
+                .row.mb-3
+                    label.form-label
+                        | &nbsp;&nbsp;&nbsp;Sexo: &nbsp;&nbsp;
+                    .form-check.form-check-inline
+                        input#inlineRadio1.form-check-input(type='radio' name='sexo' value='Masculino')
+                        label.form-check-label(for='inlineRadio1') Masculino
+                    .form-check.form-check-inline
+                        input#inlineRadio2.form-check-input(type='radio' name='sexo' value='Feminino')
+                        label.form-check-label(for='inlineRadio2') Feminino
+                .d-flex.flex-row-reverse
+                    button.btn.btn-success(type='submit' name='submit' id='submit') Adicionar 
+                    p &nbsp;&nbsp;&nbsp;
+                    a.btn.btn-danger(href='/atleta') Cancelar
+    script(src='bootstrap/js/jquery-3.6.1.min.js')
+    script(src='bootstrap/js/bootstrap.bundle.min.js')
+    script(src='js/atleta.js')
