@@ -12,41 +12,44 @@ body
     +toast()
     .container
         .text-center.mb-4
-            h3 Adicionar
+            h3 Atualizar
             p.text-muted Preencha os dados abaixo
         .container.d-flex.justify-content-center
-            form(action='/atleta-cad' method='post' style='width: 50vw; min-width: 300px;' id='form')
+            form(action='/atleta-update' method='post' style='width: 50vw; min-width: 300px;' id='form')
                 .row.mb-3
                     .col
                         label.form-label
                             | Nome
-                        input.form-control(type='text' name='nome' placeholder='Insira o nome')
+                        input.form-control(type='text' name='nome' placeholder='Insira o nome' value=atleta.Nome)
                     .col
                         label.form-label
                             | Sobrenome
-                        input.form-control(type='text' name='sobrenome' placeholder='Insira o sobrenome')
+                        input.form-control(type='text' name='sobrenome' placeholder='Insira o sobrenome', value=atleta.Sobrenome)
                 .row
                     .col
                         label.form-label
                             | Email
-                        input.form-control(type='text' name='email' placeholder='nome@exemplo.com')
+                        input.form-control(type='text' name='email' placeholder='nome@exemplo.com', value=atleta.Email)
                     .col
                         label.form-label
                             | Telefone
-                        input.form-control(type='text' name='telefone' placeholder='11987654321')
+                        input.form-control(type='text' name='telefone' placeholder='11987654321', value=atleta.Telefone)
                 .row.mb-3
                     label.form-label
                         | &nbsp;&nbsp;&nbsp;Sexo: &nbsp;&nbsp;
                     .form-check.form-check-inline
-                        input#inlineRadio1.form-check-input(type='radio' name='sexo' value='Masculino')
+                        input#inlineRadio1.form-check-input(type='radio' name='sexo' value='Masculino' checked=atleta.Sexo == 'Masculino')
                         label.form-check-label(for='inlineRadio1') Masculino
                     .form-check.form-check-inline
-                        input#inlineRadio2.form-check-input(type='radio' name='sexo' value='Feminino')
+                        input#inlineRadio2.form-check-input(type='radio' name='sexo' value='Feminino' checked=atleta.Sexo == 'Feminino')
                         label.form-check-label(for='inlineRadio2') Feminino
+                .row
+                    .invisible
+                        input.form-control(type='text' name='idAtleta' placeholder='Insira o nome' value=atleta.IdAtleta)
                 .d-flex.flex-row-reverse
-                    button.btn.btn-success(type='submit' name='submit' id='submit') Adicionar 
+                    button.btn.btn-success(type='submit' name='submit' id='submit') Atualizar 
                     p &nbsp;&nbsp;&nbsp;
                     a.btn.btn-danger(href='/atleta') Cancelar
     script(src='bootstrap/js/jquery-3.6.1.min.js')
     script(src='bootstrap/js/bootstrap.bundle.min.js')
-    script(src='js/atletaCad.js')
+    script(src='js/atletaUpd.js')

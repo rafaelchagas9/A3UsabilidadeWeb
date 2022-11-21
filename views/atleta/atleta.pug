@@ -52,7 +52,7 @@ body
                         td= atleta.Telefone
                         td= atleta.Sexo
                         td
-                            a.btn
+                            a.btn(href="atleta-update?id=" + atleta.IdAtleta)
                                 i.fa-solid.fa-pen-to-square.fs-5.me-3
                             a.btn(data-bs-toggle="modal" data-bs-target="#modalDeletar")
                                 i.fa-solid.fa-trash.fs-5
