@@ -2,16 +2,15 @@ const Connection = require('tedious').Connection
 const Request = require('tedious').Request
 
 const config = {
-    server: 'localhost',
+    server: '34.132.45.86',
     authentication: {
       type: 'default',
       options: {
-        'userName': 'sa',
+        'userName': 'a3',
         'password': '12345678',
       }
     },
     options:{
-        'port':1434,
         'trustServerCertificate': true,
         'database': 'olimpiadas',
     }
