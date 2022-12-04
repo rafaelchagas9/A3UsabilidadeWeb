@@ -1,0 +1,42 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Document
+    link(rel='stylesheet' href='bootstrap/css/bootstrap.min.css')
+body
+    include ../navbar.pug
+    +navbar()
+    include ../toast.pug
+    +toast()
+    .container
+        .text-center.mb-4
+            h3 Adicionar
+            p.text-muted Preencha os dados abaixo
+        .container.d-flex.justify-content-center
+            form(action='/esporte-cad' method='post' style='width: 50vw; min-width: 300px;' id='form')
+                .row.mb-3
+                    .col
+                        label.form-label
+                            | Nome do Evento
+                        input.form-control(type='text' name='nome' placeholder='Insira o nome')
+                .row
+                    .col
+                        label.form-label
+                            | Num. Mínimo de Participantes
+                        input.form-control(type='number' name='min' placeholder='1')
+                    .col
+                        label.form-label
+                            | Num. Máximo de Participantes
+                        input.form-control(type='number' name='max' placeholder='12')
+                .row
+                    .invisible
+                        p Teste
+                .d-flex.flex-row-reverse
+                    button.btn.btn-success(type='submit' name='submit' id='submit') Adicionar 
+                    p &nbsp;&nbsp;&nbsp;
+                    a.btn.btn-danger(href='/esporte') Cancelar
+    script(src='bootstrap/js/jquery-3.6.1.min.js')
+    script(src='bootstrap/js/bootstrap.bundle.min.js')
+    script(src='js/esporte/esporteCad.js')

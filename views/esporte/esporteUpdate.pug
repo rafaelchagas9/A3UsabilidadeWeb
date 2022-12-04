@@ -1,0 +1,42 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Document
+    link(rel='stylesheet' href='bootstrap/css/bootstrap.min.css')
+body
+    include ../navbar.pug
+    +navbar()
+    include ../toast.pug
+    +toast()
+    .container
+        .text-center.mb-4
+            h3 Atualizar
+            p.text-muted Preencha os dados abaixo
+        .container.d-flex.justify-content-center
+            form(action='/esporte-update' method='post' style='width: 50vw; min-width: 300px;' id='form')
+                .row.mb-3
+                    .col
+                        label.form-label
+                            | Nome
+                        input.form-control(type='text' name='nome' placeholder='Insira o nome' value=esporte.NomeEsporte)
+                .row
+                    .col
+                        label.form-label
+                            | Num. Mínimo de Participantes
+                        input.form-control(type='numeric' name='min' placeholder='1', value=esporte.ParticipantesMinimo)
+                    .col
+                        label.form-label
+                            | Num. Máximo de Participantes
+                        input.form-control(type='numeric' name='max' placeholder='12', value=esporte.ParticipantesMaximo)
+                .row
+                    .invisible
+                        input.form-control(type='text' name='idEsporte' placeholder='Insira o nome' value=esporte.IdEsporte)
+                .d-flex.flex-row-reverse
+                    button.btn.btn-success(type='submit' name='submit' id='submit') Atualizar 
+                    p &nbsp;&nbsp;&nbsp;
+                    a.btn.btn-danger(href='/esporte') Cancelar
+    script(src='bootstrap/js/jquery-3.6.1.min.js')
+    script(src='bootstrap/js/bootstrap.bundle.min.js')
+    script(src='js/esporte/esporteUpd.js')

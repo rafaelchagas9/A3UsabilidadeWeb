@@ -1,9 +1,3 @@
-const form      = document.getElementById('form');
-const nome      = document.getElementById('nome');
-const sobrenome = document.getElementById('sobrenome');
-const email     = document.getElementById('email');
-const telefone  = document.getElementById('telefone');
-const sexo      = document.getElementById('sexo');
 const btnToast  = document.getElementById('btnToast');
 const btnConfirmaExcluir = document.getElementById('btnConfirmaExcluir');
 
@@ -41,12 +35,6 @@ $('#modalDeletar').on('show.bs.modal', function (event) {
     var id = button.closest("tr").find(".idAtleta").text();
     document.getElementById('idAtleta').innerHTML = id;
 })
-
-form.addEventListener('submit', (e) => {
-    if (!checkInput()) {
-        e.preventDefault();
-    }
-});
 
 function showToast(message){
     var toast = document.getElementById('toast');       

@@ -15,38 +15,31 @@ body
             h3 Adicionar
             p.text-muted Preencha os dados abaixo
         .container.d-flex.justify-content-center
-            form(action='/atleta-cad' method='post' style='width: 50vw; min-width: 300px;' id='form')
+            form(action='/evento-cad' method='post' style='width: 50vw; min-width: 300px;' id='form')
                 .row.mb-3
                     .col
                         label.form-label
-                            | Nome
+                            | Nome Evento
                         input.form-control(type='text' name='nome' placeholder='Insira o nome')
+                .row.mb-3
                     .col
                         label.form-label
-                            | Sobrenome
-                        input.form-control(type='text' name='sobrenome' placeholder='Insira o sobrenome')
-                .row
+                            | Data Início
+                        input.form-control(type='datetime-local' name='dataInicio' placeholder='nome@exemplo.com')
                     .col
                         label.form-label
-                            | Email
-                        input.form-control(type='text' name='email' placeholder='nome@exemplo.com')
-                    .col
-                        label.form-label
-                            | Telefone
-                        input.form-control(type='text' name='telefone' placeholder='11987654321')
+                            | Data Fim
+                        input.form-control(type='datetime-local' name='dataFim' placeholder='11987654321')
                 .row.mb-3
                     label.form-label
-                        | &nbsp;&nbsp;&nbsp;Sexo: &nbsp;&nbsp;
-                    .form-check.form-check-inline
-                        input#inlineRadio1.form-check-input(type='radio' name='sexo' value='Masculino')
-                        label.form-check-label(for='inlineRadio1') Masculino
-                    .form-check.form-check-inline
-                        input#inlineRadio2.form-check-input(type='radio' name='sexo' value='Feminino')
-                        label.form-check-label(for='inlineRadio2') Feminino
+                        | Esporte
+                    select.form-select(aria-label="Default select example" name='IdEsporte')
+                        each esporte in esportes
+                            option(value=esporte.IdEsporte)= esporte.NomeEsporte
                 .d-flex.flex-row-reverse
                     button.btn.btn-success(type='submit' name='submit' id='submit') Adicionar 
                     p &nbsp;&nbsp;&nbsp;
                     a.btn.btn-danger(href='/atleta') Cancelar
     script(src='bootstrap/js/jquery-3.6.1.min.js')
     script(src='bootstrap/js/bootstrap.bundle.min.js')
-    script(src='js/atleta/atletaCad.js')
+    script(src='js/atletaCad.js')

@@ -5,6 +5,54 @@ head
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     title Document
     link(rel='stylesheet' href='bootstrap/css/bootstrap.min.css')
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer")
 body
     include ../navbar.pug
     +navbar()
+    include ../toast.pug
+    +toast()
+    // Modal
+    #modalDeletar.modal.fade(tabindex='-1' role='dialog' aria-labelledby='modalDeletar' aria-hidden='true')
+        .modal-dialog.modal-sm(role='document')
+            .modal-content
+                .modal-header
+                    h5#modalDeletar.modal-title Atenção!
+                    button.close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                        span(aria-hidden='true') &times;
+                .modal-body
+                    .invisible(id='idEvento')
+                       | 
+                    | Realmente deseja apagar esse evento?
+                    .invisible
+                       | Teste
+                .modal-footer
+                    button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Não
+                    button.btn.btn-primary(type='button' id="btnConfirmaExcluir") Sim
+    .container.my-5
+        .d-grid.gap-2.d-md-flex.justify-content-md-end.my-5
+            a(href="evento-cad")
+                button.btn.btn-primary(type='button') Novo Evento
+        table.table.table-hover.text-center.table-striped
+            thead
+                tr
+                    th(scope='col') #
+                    th(scope='col') Nome
+                    th(scope='col') Data Início
+                    th(scope='col') Data Fim
+                    th(scope='col') Esporte
+            tbody   
+                each evento in eventos
+                    tr
+                        th.idEvento(scope='row')= evento.IdEvento
+                        td= evento.NomeEvento
+                        td= evento.DataInicioEvento
+                        td= evento.DataFimEvento
+                        td= evento.NomeEsporte
+                        td
+                            a.btn(href="evento-update?id=" + evento.IdEvento)
+                                i.fa-solid.fa-pen-to-square.fs-5.me-3
+                            a.btn(data-bs-toggle="modal" data-bs-target="#modalDeletar")
+                                i.fa-solid.fa-trash.fs-5
+    script(src='bootstrap/js/jquery-3.6.1.min.js')
+    script(src='bootstrap/js/bootstrap.bundle.min.js')
+    script(src='js/evento/evento.js')
