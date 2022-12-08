@@ -162,19 +162,11 @@ router.get('/evento-update', (req, res) => {
   const recuperarEvento = require('../static/evento/recuperarEvento');
   var evento;
   evento = recuperarEvento(req.query.id).then((evento) => {
-    res.render('./evento/eventoUpdate', {evento: evento});
-  });
-});
-
-// Atualização dos eventos
-router.post('/evento-update', (req, res) => {
-  const atualizarEvento = require('../static/evento/atualizar');
-  const sucesso = atualizarEvento(req.body).then((sucesso) => {
-    if (sucesso){
-      res.redirect('/evento');
-    } else{
-      res.redirect('/evento-update', {idEvento: body.idEvento});
-    }
+    const recuperarEsportes = require('../static/esporte/recuperar');
+    var lista_esportes = [];
+    lista_esportes = recuperarEsportes().then((lista_esportes) => {
+      res.render('./evento/eventoUpdate', {evento: evento, esportes: lista_esportes});
+    });
   });
 });
 

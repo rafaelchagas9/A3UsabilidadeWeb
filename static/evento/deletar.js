@@ -1,6 +1,6 @@
 var Request = require('tedious').Request
 
-function excluirEsporte(body){
+function excluirEvento(body){
 
     return new Promise((resolve, reject) => {
         var connection = require('../db/connect');
@@ -17,7 +17,7 @@ function excluirEsporte(body){
             if (err) {
                 console.log(err)
             } else {
-                var request = new Request("delete from esporte where IdEsporte = @id", (err, rowCount) => {
+                var request = new Request("delete from evento where IdEvento = @IdEvento", (err, rowCount) => {
                     if (err) {
                         console.log(err);
                         connection.close()
@@ -30,7 +30,7 @@ function excluirEsporte(body){
                 })
                 
                 var TYPES = require('tedious').TYPES;
-                request.addParameter('id', TYPES.Int, body.idEsporte)
+                request.addParameter('IdEvento', TYPES.Int, body.idEvento)
     
     
                 connection.execSql(request);
@@ -43,4 +43,4 @@ function excluirEsporte(body){
     
 }
 
-module.exports = excluirEsporte;
+module.exports = excluirEvento;
